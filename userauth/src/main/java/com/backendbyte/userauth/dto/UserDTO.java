@@ -12,16 +12,13 @@ public class UserDTO {
 	
 	private Set<String> roles;
 	
-	private Profile profile;
-	
 	public UserDTO() {}
 
-	public UserDTO(Long id, String username, Set<String> roles, Profile profile) {
+	public UserDTO(Long id, String username, Set<String> roles) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.roles = roles;
-		this.profile = profile;
 	}
 
 	public Long getId() {
@@ -48,18 +45,11 @@ public class UserDTO {
 		this.roles = roles;
 	}	
 
-	public Profile getProfile() {
-		return profile;
-	}
 
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
 
 	@Override
 	public String toString() {
-		return "UserDTO [id=" + id + ", username=" + username + ", roles=" + roles
-				+ ", profile=" + profile + "]";
+		return "UserDTO [id=" + id + ", username=" + username + ", roles=" + roles + "]";
 	}
 
 }

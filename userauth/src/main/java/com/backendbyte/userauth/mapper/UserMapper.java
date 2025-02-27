@@ -26,10 +26,6 @@ public class UserMapper {
 			userDTO.setRoles(roles);
 		}
 
-		if (user.getProfile() != null) {
-			userDTO.setProfile(user.getProfile());
-		}
-
 		return userDTO;
 	}
 

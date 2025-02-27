@@ -35,12 +35,11 @@ public interface UserService {
 	// ============= custom methods =============//
 	public UserDTO updateUser(Long id, User newUser);
 	
-	public UserDTO findByUsername(String username);
+	public UserProfileDTO findByUsername(String username);
 
 	public UserProfileDTO findByEmail(String email);
 
 	public UserProfileDTO findByMobileNo(String mobileNo);
 
-	public List<UserProfileDTO> findUserDetailsByUsername(String username);
 
 }
