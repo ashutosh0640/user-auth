@@ -14,6 +14,7 @@ import com.backendbyte.userauth.entity.User;
 import com.backendbyte.userauth.exception.EntityNotFoundException;
 import com.backendbyte.userauth.exception.EntityNotSaveException;
 import com.backendbyte.userauth.mapper.UserMapper;
+import com.backendbyte.userauth.mapper.UserProfileMapper;
 import com.backendbyte.userauth.repository.UserRepository;
 import com.backendbyte.userauth.service.UserService;
 
@@ -194,33 +195,44 @@ public class UserServiceImpl implements UserService{
     }
 
 	@Override
-	public UserDTO findByUsername(String username) {
+	public UserProfileDTO findByUsername(String username) {
 		try {
 			logger.info("Finding User by username: {}"+username);
 			User user = userRepo.findByUsername(username)
 					.orElseThrow(() -> new EntityNotFoundException("User not found with username: "+username));
-			return UserMapper.toDTO(user);
+			return UserProfileMapper.toDTO(user);
 		} catch (Exception ex) {
 			logger.error("Failed to find user with username: {}", username , ex);
             throw new RuntimeException("Failed to find user with username"+ username, ex);
 		}
 	}
 
-	@Override
-	public UserProfileDTO findByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public UserProfileDTO findByMobileNo(String mobileNo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public UserProfileDTO findByEmail(String email) {
+        try {
+            logger.info("Fetching user profile by email: {}", email);
+            User user = userRepo.findByEmail(email)
+            		.orElseThrow(() -> new EntityNotFoundException(""));
+            return UserProfileMapper.toDTO(user);
+        } catch (Exception ex) {
+        	logger.error("Error fetching user by email: {}", email, ex);
+            throw new RuntimeException("Failed to find user with email"+ email, ex); 
+        }
+    }
 
-	@Override
-	public List<UserProfileDTO> findUserDetailsByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public UserProfileDTO findByMobileNo(String mobileNo) {
+        try {
+            logger.info("Fetching user profile by mobile number: {}", mobileNo);
+            User user = userRepo.findByMobileNo(mobileNo)
+            		.orElseThrow(() -> new EntityNotFoundException(""));
+            return UserProfileMapper.toDTO(user);
+       
+        } catch (Exception ex) {
+            logger.error("Error fetching user by mobile number: {}", mobileNo, ex);
+            throw new RuntimeException("Failed to find user with mobile number"+ mobileNo, ex); 
+        }
+    }
+
 }

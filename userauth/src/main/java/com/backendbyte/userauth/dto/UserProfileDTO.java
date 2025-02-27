@@ -1,7 +1,7 @@
 package com.backendbyte.userauth.dto;
 
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Set;
 
 public class UserProfileDTO {
 	
@@ -14,10 +14,12 @@ public class UserProfileDTO {
     private String mobileNo;
     private Timestamp lastLoginDate;
     private String image;
-    private List<String> roles;
+    private Set<String> roles;
+    
 	public UserProfileDTO() {}
+	
 	public UserProfileDTO(Long userId, String username, String firstName, String middleName, String lastName,
-			String email, String mobileNo, Timestamp lastLoginDate, String image, List<String> roles) {
+			String email, String mobileNo, Timestamp lastLoginDate, String image, Set<String> roles) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -84,10 +86,10 @@ public class UserProfileDTO {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public List<String> getRoles() {
+	public Set<String> getRoles() {
 		return roles;
 	}
-	public void setRoles(List<String> roles) {
+	public void setRoles(Set<String> roles) {
 		this.roles = roles;
 	}
 	@Override
