@@ -2,8 +2,6 @@ package com.backendbyte.userauth.dto;
 
 import java.util.Set;
 
-import com.backendbyte.userauth.entity.Profile;
-
 public class UserDTO {
 
 	private Long id;
