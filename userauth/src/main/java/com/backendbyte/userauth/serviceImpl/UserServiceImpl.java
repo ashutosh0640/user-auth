@@ -71,6 +71,7 @@ public class UserServiceImpl implements UserService{
         }
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public UserDTO save(User entity) {
 		try {
